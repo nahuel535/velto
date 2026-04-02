@@ -171,26 +171,62 @@ ScrollTrigger.create({
   },
 });
 
-// ─── Showcase screen panels build up ─────────────────────────────────────────
-document.querySelectorAll(".showcase-card").forEach((card) => {
-  const panels = card.querySelectorAll(".screen-panel, .screen-row span");
-  gsap.set(panels, { scaleX: 0, transformOrigin: "left center" });
+// ─── Showcase: Dashboard card — KPI chips + chart bars ───────────────────────
+(() => {
+  const dash = document.querySelector(".showcase-card:nth-child(1)");
+  if (!dash) return;
+  const kpis = dash.querySelectorAll(".sc-kpi");
+  const bars = dash.querySelectorAll(".sc-bar");
+  gsap.set(kpis, { autoAlpha: 0, y: 14 });
+  gsap.set(bars, { scaleY: 0, transformOrigin: "bottom center" });
 
   ScrollTrigger.create({
-    trigger: card,
+    trigger: dash,
     start: "top 82%",
     once: true,
     onEnter: () => {
-      gsap.to(panels, {
-        scaleX: 1,
-        stagger: 0.09,
-        duration: 0.5,
-        ease: "power3.out",
-        delay: 0.25,
-      });
+      gsap.to(kpis, { autoAlpha: 1, y: 0, stagger: 0.08, duration: 0.45, ease: "power2.out", delay: 0.2 });
+      gsap.to(bars, { scaleY: 1, stagger: 0.04, duration: 0.55, ease: "power3.out", delay: 0.45 });
     },
   });
-});
+})();
+
+// ─── Showcase: Stock card — table rows slide in ───────────────────────────────
+(() => {
+  const stock = document.querySelector(".showcase-card:nth-child(2)");
+  if (!stock) return;
+  const rows = stock.querySelectorAll(".sc-trow");
+  gsap.set(rows, { autoAlpha: 0, x: -14 });
+
+  ScrollTrigger.create({
+    trigger: stock,
+    start: "top 82%",
+    once: true,
+    onEnter: () => {
+      gsap.to(rows, { autoAlpha: 1, x: 0, stagger: 0.1, duration: 0.45, ease: "power2.out", delay: 0.2 });
+    },
+  });
+})();
+
+// ─── Showcase: Ventas+QR card — rows + QR block ──────────────────────────────
+(() => {
+  const sales = document.querySelector(".showcase-card:nth-child(3)");
+  if (!sales) return;
+  const rows = sales.querySelectorAll(".sc-trow");
+  const qr = sales.querySelector(".sc-qr-block");
+  gsap.set(rows, { autoAlpha: 0, x: -14 });
+  if (qr) gsap.set(qr, { autoAlpha: 0, scale: 0.88 });
+
+  ScrollTrigger.create({
+    trigger: sales,
+    start: "top 82%",
+    once: true,
+    onEnter: () => {
+      gsap.to(rows, { autoAlpha: 1, x: 0, stagger: 0.1, duration: 0.45, ease: "power2.out", delay: 0.2 });
+      if (qr) gsap.to(qr, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "back.out(1.5)", delay: 0.5 });
+    },
+  });
+})();
 
 // ─── Feature cards scale + fade entrance ─────────────────────────────────────
 gsap.set(".feature-card", { autoAlpha: 0, y: 50, scale: 0.97 });

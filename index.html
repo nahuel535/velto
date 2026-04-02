@@ -51,7 +51,7 @@
           <div class="device-screen">
             <div class="device-top">
               <div>
-                <p class="device-label">Velto OS</p>
+                <p class="device-label">XYLO — Dashboard</p>
                 <h2>Una vista clara del negocio.</h2>
               </div>
               <span class="status-pill">En tiempo real</span>
@@ -59,49 +59,52 @@
 
             <div class="stats-grid">
               <article class="metric-card">
-                <span>Stock</span>
-                <strong>Inventario en vivo</strong>
-              </article>
-              <article class="metric-card">
                 <span>Ventas</span>
-                <strong>Operación trazable</strong>
+                <strong>$18.400</strong>
+                <em class="kpi-sub">12 operaciones</em>
               </article>
               <article class="metric-card">
-                <span>Pagos</span>
-                <strong>Métodos registrados</strong>
+                <span>Ganancia</span>
+                <strong>$4.210</strong>
+                <em class="kpi-sub">22.8% margen</em>
+              </article>
+              <article class="metric-card">
+                <span>Stock</span>
+                <strong>$31.600</strong>
+                <em class="kpi-sub">17 unidades</em>
               </article>
             </div>
 
             <div class="activity-card">
               <div class="card-head">
                 <div>
-                  <span class="mini-label">Actividad reciente</span>
-                  <h3>Eventos de operación</h3>
+                  <span class="mini-label">Ventas recientes</span>
+                  <h3>Operaciones del mes</h3>
                 </div>
-                <span class="mini-icon">◌</span>
+                <span class="month-badge">Abr 2026</span>
               </div>
 
               <div class="activity-list">
                 <div class="activity-item">
                   <div>
-                    <strong>Venta registrada</strong>
-                    <span>Cliente + vendedor + precio</span>
+                    <strong>iPhone 15 Pro Max · 256GB</strong>
+                    <span>Juan García · Carlos V.</span>
                   </div>
-                  <em>+ ganancia calculada</em>
+                  <em>+$210</em>
                 </div>
                 <div class="activity-item">
                   <div>
-                    <strong>Pago validado</strong>
-                    <span>Método 1 + método 2</span>
+                    <strong>iPhone 14 · 128GB · Negro</strong>
+                    <span>M. López · Andrés R.</span>
                   </div>
-                  <em>+ balance controlado</em>
+                  <em>+$155</em>
                 </div>
                 <div class="activity-item">
                   <div>
-                    <strong>Producto trazado</strong>
-                    <span>IMEI + estado + QR</span>
+                    <strong>iPhone 13 · 128GB · Blanco</strong>
+                    <span>P. Rodríguez · Carlos V.</span>
                   </div>
-                  <em>+ stock actualizado</em>
+                  <em>+$98</em>
                 </div>
               </div>
             </div>
@@ -144,47 +147,157 @@
       </div>
 
       <div class="container showcase-grid">
+
+        <!-- Card 1: Dashboard real -->
         <article class="showcase-card reveal">
           <div class="showcase-visual dark-screen">
             <div class="window-dots"><span></span><span></span><span></span></div>
-            <div class="screen-panel large"></div>
-            <div class="screen-row two"><span></span><span></span></div>
-            <div class="screen-panel small"></div>
+
+            <div class="sc-kpi-row">
+              <div class="sc-kpi">
+                <span>Ventas</span>
+                <strong>$18.4k</strong>
+              </div>
+              <div class="sc-kpi">
+                <span>Ganancia</span>
+                <strong class="sc-green">$4.2k</strong>
+              </div>
+              <div class="sc-kpi">
+                <span>Stock</span>
+                <strong class="sc-blue">$31.6k</strong>
+              </div>
+              <div class="sc-kpi">
+                <span>Acum.</span>
+                <strong class="sc-purple">$84.1k</strong>
+              </div>
+            </div>
+
+            <div class="sc-chart">
+              <div class="sc-chart-label-top">Costo vs Ganancia — últimos 6 meses</div>
+              <div class="sc-bars">
+                <div class="sc-bar-group"><div class="sc-bar cost" style="height:44px"></div><div class="sc-bar profit" style="height:22px"></div></div>
+                <div class="sc-bar-group"><div class="sc-bar cost" style="height:60px"></div><div class="sc-bar profit" style="height:30px"></div></div>
+                <div class="sc-bar-group"><div class="sc-bar cost" style="height:52px"></div><div class="sc-bar profit" style="height:28px"></div></div>
+                <div class="sc-bar-group"><div class="sc-bar cost" style="height:76px"></div><div class="sc-bar profit" style="height:40px"></div></div>
+                <div class="sc-bar-group"><div class="sc-bar cost" style="height:64px"></div><div class="sc-bar profit" style="height:34px"></div></div>
+                <div class="sc-bar-group"><div class="sc-bar cost" style="height:88px"></div><div class="sc-bar profit" style="height:50px"></div></div>
+              </div>
+              <div class="sc-chart-months">
+                <span>Nov</span><span>Dic</span><span>Ene</span><span>Feb</span><span>Mar</span><span>Abr</span>
+              </div>
+            </div>
           </div>
           <div class="showcase-copy">
-            <span class="tag">Basado en módulo real</span>
+            <span class="tag">Módulo real — XYLO</span>
             <h3>Dashboard general</h3>
-            <p>KPIs, evolución mensual, ventas recientes, modelos más vendidos y distribución por métodos de pago.</p>
+            <p>KPIs en USD, evolución mensual de costo vs ganancia, ventas recientes, modelos más vendidos y métodos de pago.</p>
           </div>
         </article>
 
-        <article class="showcase-card reveal delay-1">
+        <!-- Card 2: Stock real (Products table) -->
+        <article class="showcase-card reveal">
           <div class="showcase-visual dark-screen">
             <div class="window-dots"><span></span><span></span><span></span></div>
-            <div class="screen-row three"><span></span><span></span><span></span></div>
-            <div class="screen-panel medium"></div>
-            <div class="screen-panel medium"></div>
+
+            <div class="sc-table">
+              <div class="sc-thead">
+                <span>Modelo</span>
+                <span>Cap.</span>
+                <span>Batería</span>
+                <span>Venta USD</span>
+                <span>ARS</span>
+              </div>
+              <div class="sc-trow">
+                <span class="sc-model">iPhone 15 Pro</span>
+                <span>256GB</span>
+                <span class="sc-badge green">94%</span>
+                <span class="sc-price">$1.150</span>
+                <span class="sc-ars">$1.120.500</span>
+              </div>
+              <div class="sc-trow">
+                <span class="sc-model">iPhone 14</span>
+                <span>128GB</span>
+                <span class="sc-badge yellow">78%</span>
+                <span class="sc-price">$850</span>
+                <span class="sc-ars">$828.750</span>
+              </div>
+              <div class="sc-trow">
+                <span class="sc-model">iPhone 13</span>
+                <span>128GB</span>
+                <span class="sc-badge green">91%</span>
+                <span class="sc-price">$680</span>
+                <span class="sc-ars">$663.000</span>
+              </div>
+              <div class="sc-trow sc-row-muted">
+                <span class="sc-model">iPhone 12</span>
+                <span>64GB</span>
+                <span class="sc-badge red">62%</span>
+                <span class="sc-price">$490</span>
+                <span class="sc-ars">$477.750</span>
+              </div>
+            </div>
           </div>
           <div class="showcase-copy">
-            <span class="tag">Basado en módulo real</span>
+            <span class="tag">Módulo real — XYLO</span>
             <h3>Stock inteligente</h3>
-            <p>Listado filtrable por modelo, IMEI, color, capacidad y condición, con referencia en USD y ARS.</p>
+            <p>Listado filtrable por modelo, IMEI, color, capacidad y condición. Batería con badge visual. Precio en USD y ARS en vivo.</p>
           </div>
         </article>
 
-        <article class="showcase-card reveal delay-2">
+        <!-- Card 3: Ventas + QR real -->
+        <article class="showcase-card reveal">
           <div class="showcase-visual dark-screen">
             <div class="window-dots"><span></span><span></span><span></span></div>
-            <div class="screen-panel medium"></div>
-            <div class="screen-row two"><span></span><span></span></div>
-            <div class="screen-panel small"></div>
+
+            <div class="sc-sale-layout">
+              <div class="sc-table sc-sale-table">
+                <div class="sc-thead">
+                  <span>Producto</span>
+                  <span>Cliente</span>
+                  <span>Venta</span>
+                  <span>Ganancia</span>
+                </div>
+                <div class="sc-trow">
+                  <span class="sc-model">iPhone 15 Pro</span>
+                  <span>J. García</span>
+                  <span class="sc-price">$1.150</span>
+                  <span class="sc-profit">+$210</span>
+                </div>
+                <div class="sc-trow">
+                  <span class="sc-model">iPhone 14</span>
+                  <span>M. López</span>
+                  <span class="sc-price">$850</span>
+                  <span class="sc-profit">+$155</span>
+                </div>
+                <div class="sc-trow">
+                  <span class="sc-model">iPhone 13</span>
+                  <span>P. Rodríguez</span>
+                  <span class="sc-price">$680</span>
+                  <span class="sc-profit">+$98</span>
+                </div>
+              </div>
+
+              <div class="sc-qr-block">
+                <div class="sc-qr-code">
+                  <div class="qr-row"><div class="qr-cell on"></div><div class="qr-cell on"></div><div class="qr-cell on"></div><div class="qr-cell off"></div><div class="qr-cell on"></div><div class="qr-cell off"></div><div class="qr-cell on"></div></div>
+                  <div class="qr-row"><div class="qr-cell on"></div><div class="qr-cell off"></div><div class="qr-cell on"></div><div class="qr-cell off"></div><div class="qr-cell off"></div><div class="qr-cell off"></div><div class="qr-cell on"></div></div>
+                  <div class="qr-row"><div class="qr-cell on"></div><div class="qr-cell off"></div><div class="qr-cell on"></div><div class="qr-cell on"></div><div class="qr-cell on"></div><div class="qr-cell off"></div><div class="qr-cell on"></div></div>
+                  <div class="qr-row"><div class="qr-cell off"></div><div class="qr-cell on"></div><div class="qr-cell off"></div><div class="qr-cell on"></div><div class="qr-cell off"></div><div class="qr-cell on"></div><div class="qr-cell off"></div></div>
+                  <div class="qr-row"><div class="qr-cell on"></div><div class="qr-cell off"></div><div class="qr-cell on"></div><div class="qr-cell off"></div><div class="qr-cell on"></div><div class="qr-cell off"></div><div class="qr-cell on"></div></div>
+                  <div class="qr-row"><div class="qr-cell on"></div><div class="qr-cell off"></div><div class="qr-cell off"></div><div class="qr-cell on"></div><div class="qr-cell off"></div><div class="qr-cell on"></div><div class="qr-cell on"></div></div>
+                  <div class="qr-row"><div class="qr-cell on"></div><div class="qr-cell on"></div><div class="qr-cell on"></div><div class="qr-cell off"></div><div class="qr-cell on"></div><div class="qr-cell off"></div><div class="qr-cell on"></div></div>
+                </div>
+                <span class="sc-qr-label">QR · Etiqueta</span>
+              </div>
+            </div>
           </div>
           <div class="showcase-copy">
-            <span class="tag">Basado en módulo real</span>
+            <span class="tag">Módulo real — XYLO</span>
             <h3>Venta + QR</h3>
-            <p>Flujo de venta conectado con escáner, detalle por operación, historial de pagos y etiqueta imprimible por producto.</p>
+            <p>Flujo de venta con cliente, vendedor, ganancia por operación. QR por producto, escáner integrado y etiqueta imprimible.</p>
           </div>
         </article>
+
       </div>
     </section>
 
