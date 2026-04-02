@@ -1,0 +1,310 @@
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.defaults({ ease: "power3.out" });
+
+const mm = gsap.matchMedia();
+
+// ─── Header scroll ────────────────────────────────────────────────────────────
+const header = document.getElementById("siteHeader");
+window.addEventListener("scroll", () => {
+  header.classList.toggle("is-scrolled", window.scrollY > 10);
+}, { passive: true });
+
+gsap.from(".site-header", { autoAlpha: 0, y: -24, duration: 0.7, ease: "power2.out" });
+
+// ─── H1 word split ───────────────────────────────────────────────────────────
+function splitWords(el) {
+  const text = el.textContent.trim();
+  const words = text.split(/\s+/);
+  el.innerHTML = words
+    .map(w => `<span class="word-wrap"><span class="word-inner">${w}</span></span>`)
+    .join(" ");
+  return el.querySelectorAll(".word-inner");
+}
+
+// ─── Hero entrance timeline ───────────────────────────────────────────────────
+const h1 = document.querySelector(".hero h1");
+const wordInners = splitWords(h1);
+
+gsap.set(".hero .eyebrow", { autoAlpha: 0, y: 20 });
+gsap.set(wordInners, { y: "110%", autoAlpha: 0 });
+gsap.set(".hero-copy", { autoAlpha: 0, y: 28 });
+gsap.set(".hero-actions .btn", { autoAlpha: 0, y: 18 });
+
+const heroTl = gsap.timeline({
+  defaults: { ease: "power4.out" },
+  delay: 0.15,
+});
+
+heroTl
+  .to(".hero .eyebrow", { autoAlpha: 1, y: 0, duration: 0.65 })
+  .to(wordInners, { y: "0%", autoAlpha: 1, stagger: 0.035, duration: 0.75 }, "-=0.3")
+  .to(".hero-copy", { autoAlpha: 1, y: 0, duration: 0.65 }, "-=0.4")
+  .to(".hero-actions .btn", { autoAlpha: 1, y: 0, stagger: 0.1, duration: 0.5 }, "-=0.35");
+
+// Brand mark spin entrance
+gsap.from(".brand-mark", {
+  scale: 0,
+  rotation: -120,
+  duration: 0.8,
+  ease: "back.out(2.2)",
+  delay: 0.2,
+});
+
+// ─── Device shell entrance ───────────────────────────────────────────────────
+gsap.set(".device-shell", { autoAlpha: 0, y: 90, scale: 0.96 });
+
+gsap.to(".device-shell", {
+  autoAlpha: 1,
+  y: 0,
+  scale: 1,
+  duration: 1.3,
+  ease: "power4.out",
+  delay: 0.65,
+});
+
+// Metric cards stagger inside device
+gsap.set(".metric-card", { autoAlpha: 0, y: 22 });
+gsap.to(".metric-card", {
+  autoAlpha: 1,
+  y: 0,
+  stagger: 0.12,
+  duration: 0.55,
+  ease: "power2.out",
+  delay: 1.5,
+});
+
+// Activity items stagger inside device
+gsap.set(".activity-item", { autoAlpha: 0, x: -18 });
+gsap.to(".activity-item", {
+  autoAlpha: 1,
+  x: 0,
+  stagger: 0.14,
+  duration: 0.5,
+  ease: "power2.out",
+  delay: 1.9,
+});
+
+// ─── Device floating idle animation ──────────────────────────────────────────
+gsap.to(".device-frame", {
+  y: -13,
+  duration: 3.8,
+  ease: "sine.inOut",
+  repeat: -1,
+  yoyo: true,
+  delay: 2.2,
+});
+
+// ─── Status pill breathing glow ───────────────────────────────────────────────
+gsap.to(".status-pill", {
+  boxShadow: "0 0 0 8px rgba(16, 185, 129, 0.13)",
+  duration: 1.5,
+  ease: "sine.inOut",
+  repeat: -1,
+  yoyo: true,
+  delay: 2.5,
+});
+
+// ─── 3D mouse parallax on device (desktop only) ──────────────────────────────
+mm.add("(min-width: 821px)", () => {
+  const heroSection = document.querySelector(".hero");
+  const deviceFrame = document.querySelector(".device-frame");
+
+  heroSection.addEventListener("mousemove", (e) => {
+    const rect = heroSection.getBoundingClientRect();
+    const xPct = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+    const yPct = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+
+    gsap.to(deviceFrame, {
+      rotationY: xPct * 5,
+      rotationX: -yPct * 3,
+      transformPerspective: 1200,
+      duration: 1.6,
+      ease: "power1.out",
+      overwrite: "auto",
+    });
+  });
+
+  heroSection.addEventListener("mouseleave", () => {
+    gsap.to(deviceFrame, {
+      rotationY: 0,
+      rotationX: 0,
+      duration: 1.4,
+      ease: "power2.out",
+    });
+  });
+});
+
+// ─── ScrollTrigger batch — all .reveal cards & blocks ────────────────────────
+gsap.set(".reveal", { autoAlpha: 0, y: 42 });
+
+ScrollTrigger.batch(".reveal", {
+  onEnter: (batch) => {
+    gsap.to(batch, {
+      autoAlpha: 1,
+      y: 0,
+      duration: 0.85,
+      stagger: 0.1,
+      ease: "power3.out",
+      overwrite: true,
+    });
+  },
+  start: "top 88%",
+  once: true,
+});
+
+// ─── Check list items slide in ───────────────────────────────────────────────
+gsap.set(".check-list li", { autoAlpha: 0, x: -22 });
+
+ScrollTrigger.create({
+  trigger: ".check-list",
+  start: "top 82%",
+  once: true,
+  onEnter: () => {
+    gsap.to(".check-list li", {
+      autoAlpha: 1,
+      x: 0,
+      stagger: 0.1,
+      duration: 0.55,
+      ease: "power2.out",
+    });
+  },
+});
+
+// ─── Showcase screen panels build up ─────────────────────────────────────────
+document.querySelectorAll(".showcase-card").forEach((card) => {
+  const panels = card.querySelectorAll(".screen-panel, .screen-row span");
+  gsap.set(panels, { scaleX: 0, transformOrigin: "left center" });
+
+  ScrollTrigger.create({
+    trigger: card,
+    start: "top 82%",
+    once: true,
+    onEnter: () => {
+      gsap.to(panels, {
+        scaleX: 1,
+        stagger: 0.09,
+        duration: 0.5,
+        ease: "power3.out",
+        delay: 0.25,
+      });
+    },
+  });
+});
+
+// ─── Feature cards scale + fade entrance ─────────────────────────────────────
+gsap.set(".feature-card", { autoAlpha: 0, y: 50, scale: 0.97 });
+
+ScrollTrigger.batch(".feature-card", {
+  onEnter: (batch) => {
+    gsap.to(batch, {
+      autoAlpha: 1,
+      y: 0,
+      scale: 1,
+      duration: 0.75,
+      stagger: 0.12,
+      ease: "power3.out",
+      overwrite: true,
+    });
+  },
+  start: "top 86%",
+  once: true,
+});
+
+// ─── Section headings reveal ──────────────────────────────────────────────────
+document.querySelectorAll(
+  ".section h2, .case-grid h2, .dark-grid h2, .cta-panel h2"
+).forEach((h2) => {
+  gsap.from(h2, {
+    autoAlpha: 0,
+    y: 36,
+    duration: 0.9,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: h2,
+      start: "top 86%",
+      once: true,
+    },
+  });
+});
+
+// ─── Dark panels parallax ─────────────────────────────────────────────────────
+gsap.to(".dark-panel.big", {
+  y: -45,
+  ease: "none",
+  scrollTrigger: {
+    trigger: "#control",
+    start: "top bottom",
+    end: "bottom top",
+    scrub: 1.5,
+  },
+});
+
+// ─── Dark mini panels stagger ─────────────────────────────────────────────────
+gsap.set(".dark-panel.mini", { autoAlpha: 0, y: 30 });
+
+ScrollTrigger.batch(".dark-panel.mini", {
+  onEnter: (batch) => {
+    gsap.to(batch, {
+      autoAlpha: 1,
+      y: 0,
+      stagger: 0.15,
+      duration: 0.7,
+      ease: "power3.out",
+      overwrite: true,
+    });
+  },
+  start: "top 85%",
+  once: true,
+});
+
+// ─── CTA panel dramatic entrance ─────────────────────────────────────────────
+gsap.from(".cta-panel", {
+  autoAlpha: 0,
+  scale: 0.93,
+  y: 60,
+  duration: 1.1,
+  ease: "power4.out",
+  scrollTrigger: {
+    trigger: ".cta-panel",
+    start: "top 82%",
+    once: true,
+  },
+});
+
+// ─── CTA buttons entrance ────────────────────────────────────────────────────
+gsap.set(".cta-panel .btn", { autoAlpha: 0, y: 18 });
+
+ScrollTrigger.create({
+  trigger: ".cta-panel",
+  start: "top 75%",
+  once: true,
+  onEnter: () => {
+    gsap.to(".cta-panel .btn", {
+      autoAlpha: 1,
+      y: 0,
+      stagger: 0.12,
+      duration: 0.55,
+      ease: "power3.out",
+      delay: 0.3,
+    });
+  },
+});
+
+// ─── Nav links hover underline animation ─────────────────────────────────────
+document.querySelectorAll(".nav-links a").forEach((link) => {
+  link.addEventListener("mouseenter", () => {
+    gsap.to(link, { y: -2, duration: 0.2, ease: "power2.out" });
+  });
+  link.addEventListener("mouseleave", () => {
+    gsap.to(link, { y: 0, duration: 0.25, ease: "power2.inOut" });
+  });
+});
+
+// ─── Accessibility: respect prefers-reduced-motion ────────────────────────────
+mm.add("(prefers-reduced-motion: reduce)", () => {
+  gsap.globalTimeline.timeScale(20);
+  ScrollTrigger.getAll().forEach((st) => {
+    if (st.vars && st.vars.scrub) st.kill();
+  });
+});
