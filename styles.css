@@ -660,6 +660,18 @@ img { max-width: 100%; display: block; }
   font-size: 12px;
   color: rgba(255,255,255,.38);
   cursor: default;
+  user-select: none;
+}
+.app-nav-clickable {
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+.app-nav-clickable:hover:not(.app-nav-active) {
+  background: rgba(255,255,255,.07);
+  color: rgba(255,255,255,.7);
+}
+.app-nav-dim {
+  opacity: .4;
 }
 .app-nav-sm {
   padding: 7px 6px;
@@ -686,6 +698,18 @@ img { max-width: 100%; display: block; }
 }
 .app-content-pad {
   padding: 14px;
+}
+
+/* Hero interactive views */
+.hero-views-wrap {
+  position: relative;
+  overflow: hidden;
+}
+.hero-view {
+  width: 100%;
+}
+.hero-view-hidden {
+  display: none;
 }
 
 /* Page header */
@@ -1179,12 +1203,67 @@ img { max-width: 100%; display: block; }
   .two-mini-panels { grid-template-columns: 1fr; }
 }
 
+/* ─── Hero app screenshot — responsive ───────────────────────────────────────
+   Breakpoint 1 (≤960px): KPIs 2×2, bottom grid stacks
+   Breakpoint 2 (≤820px): sidebar icon-only, tighter padding
+   Breakpoint 3 (≤540px): hide sidebar, full-width content
+   ─────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 960px) {
+  .hero-shot .app-kpi-grid {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    padding: 12px 14px 0;
+    gap: 6px;
+  }
+  .hero-shot .app-bottom-grid {
+    grid-template-columns: 1fr;
+    padding: 10px 14px;
+    gap: 8px;
+  }
+  .hero-shot .app-page-header {
+    padding: 12px 14px 0;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .hero-shot .app-month-nav { font-size: 11px; padding: 5px 10px; }
+}
+
+@media (max-width: 820px) {
+  /* Sidebar collapses to icon-only */
+  .hero-sidebar {
+    width: 40px !important;
+    padding: 10px 6px !important;
+    align-items: center !important;
+    gap: 2px !important;
+  }
+  .hero-sidebar .app-nav-label { display: none; }
+  .hero-sidebar .app-nav-item  { padding: 7px; justify-content: center; }
+  .hero-sidebar .app-brand-mark { width: 24px; height: 24px; font-size: 11px; border-radius: 6px; margin-bottom: 8px; }
+
+  /* Tighter content */
+  .hero-shot .app-kpi-grid  { padding: 10px 10px 0; }
+  .hero-shot .app-bottom-grid { padding: 8px 10px; }
+  .hero-shot .app-page-header { padding: 10px 10px 0; }
+  .hero-shot .app-page-title  { font-size: 14px; }
+  .hero-shot .app-page-sub    { display: none; }
+  .hero-shot [style*="padding: 10px 20px"] { padding: 8px 10px 0 !important; }
+  .hero-shot [style*="padding: 0 20px"]   { padding: 0 10px 12px !important; }
+}
+
+@media (max-width: 540px) {
+  /* Hide sidebar entirely on very small screens */
+  .hero-sidebar { display: none !important; }
+  .hero-shot .app-kpi-grid { padding: 10px 12px 0; gap: 6px; }
+  .hero-shot .app-kpi-value { font-size: 12px; }
+  .hero-shot .app-kpi-label { font-size: 9px; }
+  .device-shell { margin-top: 40px; }
+}
+
 @media (max-width: 820px) {
   .nav-links { display: none; }
   .site-header .btn-sm { display: none; }
   .hero { padding-top: 34px; }
-  .device-frame { padding: 14px; border-radius: 34px; }
-  .device-screen,
+  .device-frame { padding: 10px; border-radius: 28px; }
   .cta-panel,
   .feature-card,
   .info-card,

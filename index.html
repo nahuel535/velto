@@ -53,123 +53,148 @@
             <!-- Window chrome -->
             <div class="app-chrome">
               <div class="window-dots"><span></span><span></span><span></span></div>
-              <span class="app-chrome-title">Velto — Dashboard</span>
+              <span class="app-chrome-title" id="heroChromeTitle">Velto — Dashboard</span>
               <span class="status-pill">● En vivo</span>
             </div>
 
             <!-- App layout -->
             <div class="app-layout">
 
-              <!-- Sidebar -->
-              <div class="app-sidebar">
+              <!-- Sidebar — interactive -->
+              <div class="app-sidebar hero-sidebar">
                 <div class="app-brand-mark">V</div>
-                <div class="app-nav-item app-nav-active">
-                  <span class="app-nav-icon">▣</span><span>Dashboard</span>
+                <div class="app-nav-item app-nav-active app-nav-clickable" data-view="dashboard" data-title="Velto — Dashboard">
+                  <span class="app-nav-icon">▣</span><span class="app-nav-label">Dashboard</span>
                 </div>
-                <div class="app-nav-item">
-                  <span class="app-nav-icon">◈</span><span>Escanear</span>
+                <div class="app-nav-item app-nav-clickable" data-view="stock" data-title="Velto — Stock">
+                  <span class="app-nav-icon">▦</span><span class="app-nav-label">Stock</span>
                 </div>
-                <div class="app-nav-item">
-                  <span class="app-nav-icon">▦</span><span>Stock</span>
+                <div class="app-nav-item app-nav-clickable" data-view="ventas" data-title="Velto — Ventas">
+                  <span class="app-nav-icon">▤</span><span class="app-nav-label">Ventas</span>
                 </div>
-                <div class="app-nav-item">
-                  <span class="app-nav-icon">◎</span><span>Vendidos</span>
+                <div class="app-nav-item app-nav-dim">
+                  <span class="app-nav-icon">◈</span><span class="app-nav-label">Escanear</span>
                 </div>
-                <div class="app-nav-item">
-                  <span class="app-nav-icon">▤</span><span>Ventas</span>
+                <div class="app-nav-item app-nav-dim">
+                  <span class="app-nav-icon">◎</span><span class="app-nav-label">Vendidos</span>
                 </div>
-                <div class="app-nav-item">
-                  <span class="app-nav-icon">◐</span><span>Cotización</span>
+                <div class="app-nav-item app-nav-dim">
+                  <span class="app-nav-icon">◐</span><span class="app-nav-label">Cotización</span>
                 </div>
               </div>
 
-              <!-- Main content -->
-              <div class="app-content">
-                <div class="app-page-header">
-                  <div>
-                    <div class="app-page-title">Dashboard</div>
-                    <div class="app-page-sub">Resumen general del negocio</div>
-                  </div>
-                  <div class="app-month-nav">
-                    <span>‹</span>
-                    <span>Abril 2026</span>
-                    <span class="app-nav-disabled">›</span>
-                  </div>
-                </div>
+              <!-- Views container -->
+              <div class="app-content hero-views-wrap">
 
-                <div class="app-kpi-grid">
-                  <div class="app-kpi-card">
-                    <div class="app-kpi-label">Ventas — Abril</div>
-                    <div class="app-kpi-value">USD 3.110</div>
-                    <div class="app-kpi-sub">3 operaciones</div>
-                    <div class="app-kpi-delta up">↑ 35.8% vs marzo</div>
-                  </div>
-                  <div class="app-kpi-card">
-                    <div class="app-kpi-label">Ganancia — Abril</div>
-                    <div class="app-kpi-value app-kpi-green">USD 600</div>
-                    <div class="app-kpi-sub">Margen 19.3%</div>
-                    <div class="app-kpi-delta up">↑ 36.4% vs marzo</div>
-                  </div>
-                  <div class="app-kpi-card">
-                    <div class="app-kpi-label">Stock en inventario</div>
-                    <div class="app-kpi-value app-kpi-blue">USD 31.600</div>
-                    <div class="app-kpi-sub">20 unidades en stock</div>
-                  </div>
-                  <div class="app-kpi-card">
-                    <div class="app-kpi-label">Ganancia acumulada</div>
-                    <div class="app-kpi-value app-kpi-purple">USD 1.840</div>
-                    <div class="app-kpi-sub">8 ventas totales</div>
-                  </div>
-                </div>
-
-                <div class="app-bottom-grid">
-                  <div class="app-chart-card">
-                    <div class="app-card-header">
-                      <span class="app-card-title">Costo vs Ganancia</span>
-                      <span class="app-card-badge">Últimos 6 meses</span>
+                <!-- VIEW: Dashboard -->
+                <div class="hero-view" id="hero-view-dashboard">
+                  <div class="app-page-header">
+                    <div>
+                      <div class="app-page-title">Dashboard</div>
+                      <div class="app-page-sub">Resumen general del negocio</div>
                     </div>
-                    <div class="app-bars">
-                      <div class="app-bar-group"><div class="app-bar app-bar-cost" style="height:38px"></div><div class="app-bar app-bar-profit" style="height:18px"></div></div>
-                      <div class="app-bar-group"><div class="app-bar app-bar-cost" style="height:52px"></div><div class="app-bar app-bar-profit" style="height:24px"></div></div>
-                      <div class="app-bar-group"><div class="app-bar app-bar-cost" style="height:46px"></div><div class="app-bar app-bar-profit" style="height:20px"></div></div>
-                      <div class="app-bar-group"><div class="app-bar app-bar-cost" style="height:64px"></div><div class="app-bar app-bar-profit" style="height:28px"></div></div>
-                      <div class="app-bar-group"><div class="app-bar app-bar-cost" style="height:22px"></div><div class="app-bar app-bar-profit" style="height:10px"></div></div>
-                      <div class="app-bar-group"><div class="app-bar app-bar-cost" style="height:28px"></div><div class="app-bar app-bar-profit" style="height:14px"></div></div>
-                    </div>
-                    <div class="app-bar-labels">
-                      <span>Nov</span><span>Dic</span><span>Ene</span><span>Feb</span><span>Mar</span><span>Abr</span>
+                    <div class="app-month-nav">
+                      <span>‹</span><span>Abril 2026</span><span class="app-nav-disabled">›</span>
                     </div>
                   </div>
-
-                  <div class="app-recent-card">
-                    <div class="app-card-header">
-                      <span class="app-card-title">Ventas recientes</span>
+                  <div class="app-kpi-grid">
+                    <div class="app-kpi-card">
+                      <div class="app-kpi-label">Ventas — Abril</div>
+                      <div class="app-kpi-value">USD 3.110</div>
+                      <div class="app-kpi-sub">3 operaciones</div>
+                      <div class="app-kpi-delta up">↑ 35.8% vs marzo</div>
                     </div>
-                    <div class="app-recent-list">
-                      <div class="app-recent-row">
-                        <div>
-                          <div class="app-recent-model">iPhone 15 Pro Max 512GB</div>
-                          <div class="app-recent-client">Juan García</div>
-                        </div>
-                        <div class="app-recent-profit">+$230</div>
+                    <div class="app-kpi-card">
+                      <div class="app-kpi-label">Ganancia — Abril</div>
+                      <div class="app-kpi-value app-kpi-green">USD 600</div>
+                      <div class="app-kpi-sub">Margen 19.3%</div>
+                      <div class="app-kpi-delta up">↑ 36.4% vs marzo</div>
+                    </div>
+                    <div class="app-kpi-card">
+                      <div class="app-kpi-label">Stock</div>
+                      <div class="app-kpi-value app-kpi-blue">USD 31.600</div>
+                      <div class="app-kpi-sub">20 unidades</div>
+                    </div>
+                    <div class="app-kpi-card">
+                      <div class="app-kpi-label">Acumulado</div>
+                      <div class="app-kpi-value app-kpi-purple">USD 1.840</div>
+                      <div class="app-kpi-sub">8 ventas totales</div>
+                    </div>
+                  </div>
+                  <div class="app-bottom-grid">
+                    <div class="app-chart-card">
+                      <div class="app-card-header">
+                        <span class="app-card-title">Costo vs Ganancia</span>
+                        <span class="app-card-badge">6 meses</span>
                       </div>
-                      <div class="app-recent-row">
-                        <div>
-                          <div class="app-recent-model">iPhone 14 Pro 256GB</div>
-                          <div class="app-recent-client">Marcos López</div>
-                        </div>
-                        <div class="app-recent-profit">+$180</div>
+                      <div class="app-bars">
+                        <div class="app-bar-group"><div class="app-bar app-bar-cost" style="height:38px"></div><div class="app-bar app-bar-profit" style="height:18px"></div></div>
+                        <div class="app-bar-group"><div class="app-bar app-bar-cost" style="height:52px"></div><div class="app-bar app-bar-profit" style="height:24px"></div></div>
+                        <div class="app-bar-group"><div class="app-bar app-bar-cost" style="height:46px"></div><div class="app-bar app-bar-profit" style="height:20px"></div></div>
+                        <div class="app-bar-group"><div class="app-bar app-bar-cost" style="height:64px"></div><div class="app-bar app-bar-profit" style="height:28px"></div></div>
+                        <div class="app-bar-group"><div class="app-bar app-bar-cost" style="height:22px"></div><div class="app-bar app-bar-profit" style="height:10px"></div></div>
+                        <div class="app-bar-group"><div class="app-bar app-bar-cost" style="height:28px"></div><div class="app-bar app-bar-profit" style="height:14px"></div></div>
                       </div>
-                      <div class="app-recent-row">
-                        <div>
-                          <div class="app-recent-model">iPhone 15 512GB</div>
-                          <div class="app-recent-client">Paula Rodríguez</div>
-                        </div>
-                        <div class="app-recent-profit">+$190</div>
+                      <div class="app-bar-labels"><span>Nov</span><span>Dic</span><span>Ene</span><span>Feb</span><span>Mar</span><span>Abr</span></div>
+                    </div>
+                    <div class="app-recent-card">
+                      <div class="app-card-header"><span class="app-card-title">Ventas recientes</span></div>
+                      <div class="app-recent-list">
+                        <div class="app-recent-row"><div><div class="app-recent-model">iPhone 15 Pro Max 512GB</div><div class="app-recent-client">Juan García</div></div><div class="app-recent-profit">+$230</div></div>
+                        <div class="app-recent-row"><div><div class="app-recent-model">iPhone 14 Pro 256GB</div><div class="app-recent-client">Marcos López</div></div><div class="app-recent-profit">+$180</div></div>
+                        <div class="app-recent-row"><div><div class="app-recent-model">iPhone 15 512GB</div><div class="app-recent-client">Paula Rodríguez</div></div><div class="app-recent-profit">+$190</div></div>
                       </div>
                     </div>
                   </div>
                 </div>
+
+                <!-- VIEW: Stock -->
+                <div class="hero-view hero-view-hidden" id="hero-view-stock">
+                  <div class="app-page-header">
+                    <div>
+                      <div class="app-page-title">Stock</div>
+                      <div class="app-page-sub">20 productos en inventario</div>
+                    </div>
+                  </div>
+                  <div style="padding: 10px 20px 0;">
+                    <div class="app-search-bar">
+                      <span class="app-search-icon">⌕</span>
+                      <span class="app-search-placeholder">Buscar modelo, IMEI, color...</span>
+                    </div>
+                  </div>
+                  <div style="padding: 0 20px 16px;">
+                    <div class="app-table">
+                      <div class="app-thead"><span>Modelo</span><span>Cap.</span><span>Batería</span><span>Precio USD</span><span>ARS</span></div>
+                      <div class="app-trow"><span class="app-t-model">iPhone 15 Pro Max</span><span class="app-t-muted">256GB</span><span class="app-badge app-badge-green">97%</span><span class="app-t-price">$1.200</span><span class="app-t-ars">$1.278.000</span></div>
+                      <div class="app-trow"><span class="app-t-model">iPhone 15 Pro</span><span class="app-t-muted">128GB</span><span class="app-badge app-badge-green">100%</span><span class="app-t-price">$1.050</span><span class="app-t-ars">$1.118.250</span></div>
+                      <div class="app-trow"><span class="app-t-model">iPhone 14 Pro</span><span class="app-t-muted">256GB</span><span class="app-badge app-badge-yellow">88%</span><span class="app-t-price">$850</span><span class="app-t-ars">$905.250</span></div>
+                      <div class="app-trow"><span class="app-t-model">iPhone 14</span><span class="app-t-muted">128GB</span><span class="app-badge app-badge-yellow">84%</span><span class="app-t-price">$650</span><span class="app-t-ars">$691.750</span></div>
+                      <div class="app-trow"><span class="app-t-model">iPhone 13 Pro</span><span class="app-t-muted">256GB</span><span class="app-badge app-badge-green">91%</span><span class="app-t-price">$540</span><span class="app-t-ars">$575.100</span></div>
+                      <div class="app-trow app-trow-muted"><span class="app-t-model">iPhone 12 mini</span><span class="app-t-muted">64GB</span><span class="app-badge app-badge-red">68%</span><span class="app-t-price">$300</span><span class="app-t-ars">$319.500</span></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- VIEW: Ventas -->
+                <div class="hero-view hero-view-hidden" id="hero-view-ventas">
+                  <div class="app-page-header">
+                    <div>
+                      <div class="app-page-title">Ventas</div>
+                      <div class="app-page-sub">8 operaciones registradas</div>
+                    </div>
+                  </div>
+                  <div style="padding: 10px 20px 16px;">
+                    <div class="app-table">
+                      <div class="app-thead app-thead-ventas"><span>Producto</span><span>Cliente</span><span>Fecha</span><span>Venta</span><span>Ganancia</span><span>Pagos</span></div>
+                      <div class="app-trow app-trow-ventas"><span class="app-t-model">iPhone 15 Pro Max</span><span class="app-t-muted">Juan García</span><span class="app-t-muted">02/04</span><span class="app-t-price">$1.280</span><span class="app-t-profit">+$230</span><span class="app-pay-badge">1</span></div>
+                      <div class="app-trow app-trow-ventas"><span class="app-t-model">iPhone 14 Pro</span><span class="app-t-muted">Marcos López</span><span class="app-t-muted">01/04</span><span class="app-t-price">$880</span><span class="app-t-profit">+$180</span><span class="app-pay-badge">2</span></div>
+                      <div class="app-trow app-trow-ventas"><span class="app-t-model">iPhone 15</span><span class="app-t-muted">Paula Rodríguez</span><span class="app-t-muted">01/04</span><span class="app-t-price">$950</span><span class="app-t-profit">+$190</span><span class="app-pay-badge">1</span></div>
+                      <div class="app-trow app-trow-ventas"><span class="app-t-model">iPhone 13 Pro Max</span><span class="app-t-muted">Sebastián M.</span><span class="app-t-muted">31/03</span><span class="app-t-price">$600</span><span class="app-t-profit">+$120</span><span class="app-pay-badge">1</span></div>
+                      <div class="app-trow app-trow-ventas"><span class="app-t-model">iPhone 14</span><span class="app-t-muted">Diego González</span><span class="app-t-muted">30/03</span><span class="app-t-price">$710</span><span class="app-t-profit">+$150</span><span class="app-pay-badge">1</span></div>
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
 

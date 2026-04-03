@@ -300,6 +300,65 @@ ScrollTrigger.create({
   },
 });
 
+// ─── Hero interactive view switcher ──────────────────────────────────────────
+const heroNavItems  = document.querySelectorAll(".app-nav-clickable");
+const heroViews     = document.querySelectorAll(".hero-view");
+const heroChromeTitle = document.getElementById("heroChromeTitle");
+let heroSwitching   = false;
+
+heroNavItems.forEach((navItem) => {
+  navItem.addEventListener("click", () => {
+    if (heroSwitching) return;
+    const targetId = `hero-view-${navItem.dataset.view}`;
+    const targetView = document.getElementById(targetId);
+    const currentView = document.querySelector(".hero-view:not(.hero-view-hidden)");
+
+    if (!targetView || targetView === currentView) return;
+    heroSwitching = true;
+
+    // Update nav active state
+    heroNavItems.forEach((n) => n.classList.remove("app-nav-active"));
+    navItem.classList.add("app-nav-active");
+
+    // Update chrome title
+    if (heroChromeTitle) heroChromeTitle.textContent = navItem.dataset.title;
+
+    // Animate out → in
+    gsap.to(currentView, {
+      autoAlpha: 0,
+      x: -14,
+      duration: 0.18,
+      ease: "power2.in",
+      onComplete: () => {
+        currentView.classList.add("hero-view-hidden");
+        gsap.set(currentView, { x: 0, autoAlpha: 1 });
+
+        targetView.classList.remove("hero-view-hidden");
+        gsap.fromTo(targetView,
+          { autoAlpha: 0, x: 14 },
+          { autoAlpha: 1, x: 0, duration: 0.22, ease: "power2.out",
+            onComplete: () => { heroSwitching = false; }
+          }
+        );
+
+        // Animate new view's rows/kpis/bars
+        const kpis = targetView.querySelectorAll(".app-kpi-card");
+        const rows = targetView.querySelectorAll(".app-trow");
+        const bars = targetView.querySelectorAll(".app-bar");
+        if (kpis.length) {
+          gsap.from(kpis, { y: 10, autoAlpha: 0, stagger: 0.06, duration: 0.3, ease: "power2.out" });
+        }
+        if (rows.length) {
+          gsap.from(rows, { x: -8, autoAlpha: 0, stagger: 0.05, duration: 0.28, ease: "power2.out" });
+        }
+        if (bars.length) {
+          gsap.from(bars, { scaleY: 0, transformOrigin: "bottom center", stagger: 0.03, duration: 0.35, ease: "power3.out" });
+        }
+      },
+    });
+  });
+});
+
 // ─── Nav links hover underline animation ─────────────────────────────────────
 document.querySelectorAll(".nav-links a").forEach((link) => {
   link.addEventListener("mouseenter", () => {
