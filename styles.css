@@ -234,8 +234,9 @@ img { max-width: 100%; display: block; }
   position: relative;
   border-radius: 36px;
   border: 1px solid rgba(255,255,255,.10);
-  background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.03));
-  padding: 30px;
+  background: #0a0a0a;
+  overflow: hidden;
+  padding: 0;
 }
 
 .device-top,
@@ -560,6 +561,396 @@ img { max-width: 100%; display: block; }
 }
 .cta-panel p { color: var(--white-muted); max-width: 900px; }
 .centered { justify-content: center; }
+
+/* ─── App screenshot system ──────────────────────────────────────────────────
+   Replicates the real Velto/XYLO dark UI: sidebar + main content area.
+   Used in hero device and the 3 showcase cards.
+   Colors match the demo app: bg #0a0a0a, card #111111, border #232323
+   ─────────────────────────────────────────────────────────────────────────── */
+
+/* Wrapper for showcase cards */
+.app-shot-wrap {
+  padding: 0;
+  border-bottom: 1px solid var(--line);
+  background: #0a0a0a;
+  border-radius: 28px 28px 0 0;
+  overflow: hidden;
+}
+
+/* Full app window */
+.app-shot {
+  background: #0a0a0a;
+  overflow: hidden;
+  border-radius: 0;
+}
+
+/* Hero variant — inherits device-frame rounding */
+.hero-shot {
+  border-radius: 0;
+}
+
+/* Window chrome bar */
+.app-chrome {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: #111111;
+  border-bottom: 1px solid #232323;
+}
+.app-chrome-title {
+  flex: 1;
+  font-size: 11px;
+  font-weight: 600;
+  color: rgba(255,255,255,.38);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+}
+
+/* App two-column layout */
+.app-layout {
+  display: flex;
+}
+
+/* Sidebar */
+.app-sidebar {
+  width: 160px;
+  flex-shrink: 0;
+  background: #111111;
+  border-right: 1px solid #232323;
+  padding: 14px 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.app-sidebar-sm {
+  width: 44px;
+  padding: 12px 8px;
+  gap: 2px;
+  align-items: center;
+}
+
+.app-brand-mark {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: #f5f5f5;
+  color: #0a0a0a;
+  font-weight: 800;
+  font-size: 15px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 10px;
+  flex-shrink: 0;
+}
+.app-brand-sm {
+  width: 26px;
+  height: 26px;
+  font-size: 13px;
+  border-radius: 7px;
+  margin-bottom: 8px;
+}
+
+.app-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border-radius: 9px;
+  font-size: 12px;
+  color: rgba(255,255,255,.38);
+  cursor: default;
+}
+.app-nav-sm {
+  padding: 7px 6px;
+  justify-content: center;
+  font-size: 13px;
+}
+.app-nav-icon {
+  font-size: 13px;
+  flex-shrink: 0;
+}
+.app-nav-active {
+  background: #f5f5f5;
+  color: #0a0a0a;
+}
+.app-nav-item:not(.app-nav-active):hover {
+  background: rgba(255,255,255,.05);
+}
+
+/* Main content area */
+.app-content {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+.app-content-pad {
+  padding: 14px;
+}
+
+/* Page header */
+.app-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 20px 0;
+}
+.app-page-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #f5f5f5;
+  letter-spacing: -0.03em;
+  padding-bottom: 10px;
+}
+.app-title-sm { font-size: 13px; padding-bottom: 8px; font-weight: 700; letter-spacing: -0.02em; color: #f5f5f5; }
+.app-title-xs { font-size: 11px; font-weight: 600; color: rgba(255,255,255,.5); margin-bottom: 8px; text-transform: uppercase; letter-spacing: .14em; }
+.app-page-sub {
+  font-size: 12px;
+  color: rgba(255,255,255,.38);
+  margin-top: 2px;
+}
+
+.app-month-nav {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #111111;
+  border: 1px solid #232323;
+  border-radius: 10px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #f5f5f5;
+}
+.app-nav-disabled { color: rgba(255,255,255,.2); }
+
+/* KPI grid */
+.app-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 8px;
+  padding: 16px 20px 0;
+}
+.app-kpi-2col {
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  padding: 0;
+  gap: 6px;
+}
+.app-kpi-card {
+  background: #111111;
+  border: 1px solid #232323;
+  border-radius: 12px;
+  padding: 12px;
+}
+.app-kpi-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: rgba(255,255,255,.32);
+}
+.app-kpi-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: #f5f5f5;
+  letter-spacing: -0.03em;
+  margin-top: 5px;
+}
+.app-kpi-sub {
+  font-size: 10px;
+  color: rgba(255,255,255,.3);
+  margin-top: 3px;
+}
+.app-kpi-delta {
+  font-size: 10px;
+  font-weight: 600;
+  margin-top: 4px;
+}
+.app-kpi-delta.up   { color: #4ade80; }
+.app-kpi-delta.down { color: #f87171; }
+.app-kpi-green  { color: #4ade80 !important; }
+.app-kpi-blue   { color: #60a5fa !important; }
+.app-kpi-purple { color: #a78bfa !important; }
+
+/* Chart */
+.app-bottom-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 10px;
+  padding: 12px 20px;
+}
+.app-chart-card {
+  background: #111111;
+  border: 1px solid #232323;
+  border-radius: 12px;
+  padding: 14px;
+}
+.app-chart-sm {
+  margin-top: 8px;
+  padding: 10px;
+}
+.app-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.app-card-title {
+  font-size: 12px;
+  font-weight: 600;
+  color: #f5f5f5;
+}
+.app-card-badge {
+  font-size: 10px;
+  color: rgba(255,255,255,.3);
+  background: rgba(255,255,255,.06);
+  border-radius: 999px;
+  padding: 3px 8px;
+}
+.app-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  height: 70px;
+}
+.app-bars-sm { height: 52px; gap: 4px; }
+.app-bar-group {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  gap: 2px;
+}
+.app-bar {
+  flex: 1;
+  border-radius: 3px 3px 0 0;
+  min-height: 3px;
+}
+.app-bar-cost   { background: rgba(248,113,113,.5); }
+.app-bar-profit { background: rgba(167,139,250,.75); }
+.app-bar-labels {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 6px;
+}
+.app-bar-labels span,
+.app-bar-labels-sm span {
+  font-size: 9px;
+  color: rgba(255,255,255,.22);
+}
+
+/* Recent sales */
+.app-recent-card {
+  background: #111111;
+  border: 1px solid #232323;
+  border-radius: 12px;
+  padding: 14px;
+}
+.app-recent-list { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+.app-recent-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.app-recent-model {
+  font-size: 11px;
+  font-weight: 600;
+  color: #f5f5f5;
+}
+.app-recent-client {
+  font-size: 10px;
+  color: rgba(255,255,255,.36);
+  margin-top: 2px;
+}
+.app-recent-profit {
+  font-size: 11px;
+  font-weight: 700;
+  color: #4ade80;
+  white-space: nowrap;
+}
+
+/* Search bar */
+.app-search-bar {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: #111111;
+  border: 1px solid #232323;
+  border-radius: 9px;
+  padding: 6px 10px;
+  margin-bottom: 8px;
+}
+.app-search-icon { font-size: 13px; color: rgba(255,255,255,.28); }
+.app-search-placeholder { font-size: 11px; color: rgba(255,255,255,.22); }
+
+/* App table (stock + sales) */
+.app-table {
+  border: 1px solid #232323;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.app-thead {
+  display: grid;
+  padding: 7px 10px;
+  background: rgba(255,255,255,.03);
+  border-bottom: 1px solid #232323;
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  color: rgba(255,255,255,.28);
+}
+.app-trow {
+  display: grid;
+  padding: 7px 10px;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+  font-size: 10.5px;
+  color: rgba(255,255,255,.75);
+  align-items: center;
+}
+.app-trow:last-child { border-bottom: none; }
+.app-trow-muted { opacity: .45; }
+
+/* Stock table — 5 cols */
+.app-thead:not(.app-thead-ventas),
+.app-trow:not(.app-trow-ventas) {
+  grid-template-columns: 2fr .9fr 1fr 1.1fr 1.5fr;
+}
+
+/* Ventas table — 6 cols */
+.app-thead-ventas,
+.app-trow-ventas {
+  grid-template-columns: 1.6fr 1.2fr .8fr .8fr .8fr .5fr;
+}
+
+.app-t-model  { font-weight: 600; color: #f5f5f5; }
+.app-t-muted  { color: rgba(255,255,255,.38); }
+.app-t-price  { font-weight: 600; color: #f5f5f5; }
+.app-t-ars    { color: rgba(255,255,255,.3); font-size: 10px; }
+.app-t-profit { font-weight: 700; color: #4ade80; }
+
+.app-badge {
+  display: inline-flex;
+  padding: 2px 7px;
+  border-radius: 999px;
+  font-size: 9.5px;
+  font-weight: 700;
+}
+.app-badge-green  { background: rgba(74,222,128,.12);  color: #4ade80; }
+.app-badge-yellow { background: rgba(251,191,36,.12);  color: #fbbf24; }
+.app-badge-red    { background: rgba(248,113,113,.12); color: #f87171; }
+
+.app-pay-badge {
+  display: inline-flex;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.08);
+  color: rgba(255,255,255,.5);
+  font-size: 10px;
+  font-weight: 700;
+  align-items: center;
+  justify-content: center;
+}
 
 /* ─── Hero device — real KPI data ─────────────────────────────────────────── */
 .kpi-sub {

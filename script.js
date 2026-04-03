@@ -63,26 +63,34 @@ gsap.to(".device-shell", {
   delay: 0.65,
 });
 
-// Metric cards stagger inside device
-gsap.set(".metric-card", { autoAlpha: 0, y: 22 });
-gsap.to(".metric-card", {
+// Hero app screenshot — KPI cards and bars enter
+gsap.set(".hero-shot .app-kpi-card", { autoAlpha: 0, y: 16 });
+gsap.to(".hero-shot .app-kpi-card", {
   autoAlpha: 1,
   y: 0,
-  stagger: 0.12,
-  duration: 0.55,
+  stagger: 0.1,
+  duration: 0.5,
   ease: "power2.out",
   delay: 1.5,
 });
 
-// Activity items stagger inside device
-gsap.set(".activity-item", { autoAlpha: 0, x: -18 });
-gsap.to(".activity-item", {
+gsap.set(".hero-shot .app-bar", { scaleY: 0, transformOrigin: "bottom center" });
+gsap.to(".hero-shot .app-bar", {
+  scaleY: 1,
+  stagger: 0.04,
+  duration: 0.5,
+  ease: "power3.out",
+  delay: 2.0,
+});
+
+gsap.set(".hero-shot .app-recent-row", { autoAlpha: 0, x: -14 });
+gsap.to(".hero-shot .app-recent-row", {
   autoAlpha: 1,
   x: 0,
-  stagger: 0.14,
-  duration: 0.5,
+  stagger: 0.12,
+  duration: 0.45,
   ease: "power2.out",
-  delay: 1.9,
+  delay: 2.3,
 });
 
 // ─── Device floating idle animation ──────────────────────────────────────────
@@ -171,62 +179,27 @@ ScrollTrigger.create({
   },
 });
 
-// ─── Showcase: Dashboard card — KPI chips + chart bars ───────────────────────
-(() => {
-  const dash = document.querySelector(".showcase-card:nth-child(1)");
-  if (!dash) return;
-  const kpis = dash.querySelectorAll(".sc-kpi");
-  const bars = dash.querySelectorAll(".sc-bar");
-  gsap.set(kpis, { autoAlpha: 0, y: 14 });
-  gsap.set(bars, { scaleY: 0, transformOrigin: "bottom center" });
+// ─── Showcase cards — app screenshot reveals ──────────────────────────────────
+document.querySelectorAll(".showcase-card").forEach((card, i) => {
+  const kpis = card.querySelectorAll(".app-kpi-card");
+  const bars = card.querySelectorAll(".app-bar");
+  const rows = card.querySelectorAll(".app-trow");
+
+  if (kpis.length) gsap.set(kpis, { autoAlpha: 0, y: 10 });
+  if (bars.length) gsap.set(bars, { scaleY: 0, transformOrigin: "bottom center" });
+  if (rows.length) gsap.set(rows, { autoAlpha: 0, x: -10 });
 
   ScrollTrigger.create({
-    trigger: dash,
+    trigger: card,
     start: "top 82%",
     once: true,
     onEnter: () => {
-      gsap.to(kpis, { autoAlpha: 1, y: 0, stagger: 0.08, duration: 0.45, ease: "power2.out", delay: 0.2 });
-      gsap.to(bars, { scaleY: 1, stagger: 0.04, duration: 0.55, ease: "power3.out", delay: 0.45 });
+      if (kpis.length) gsap.to(kpis, { autoAlpha: 1, y: 0, stagger: 0.08, duration: 0.4, ease: "power2.out", delay: 0.2 });
+      if (bars.length) gsap.to(bars, { scaleY: 1, stagger: 0.035, duration: 0.45, ease: "power3.out", delay: 0.4 });
+      if (rows.length) gsap.to(rows, { autoAlpha: 1, x: 0, stagger: 0.07, duration: 0.4, ease: "power2.out", delay: 0.2 });
     },
   });
-})();
-
-// ─── Showcase: Stock card — table rows slide in ───────────────────────────────
-(() => {
-  const stock = document.querySelector(".showcase-card:nth-child(2)");
-  if (!stock) return;
-  const rows = stock.querySelectorAll(".sc-trow");
-  gsap.set(rows, { autoAlpha: 0, x: -14 });
-
-  ScrollTrigger.create({
-    trigger: stock,
-    start: "top 82%",
-    once: true,
-    onEnter: () => {
-      gsap.to(rows, { autoAlpha: 1, x: 0, stagger: 0.1, duration: 0.45, ease: "power2.out", delay: 0.2 });
-    },
-  });
-})();
-
-// ─── Showcase: Ventas+QR card — rows + QR block ──────────────────────────────
-(() => {
-  const sales = document.querySelector(".showcase-card:nth-child(3)");
-  if (!sales) return;
-  const rows = sales.querySelectorAll(".sc-trow");
-  const qr = sales.querySelector(".sc-qr-block");
-  gsap.set(rows, { autoAlpha: 0, x: -14 });
-  if (qr) gsap.set(qr, { autoAlpha: 0, scale: 0.88 });
-
-  ScrollTrigger.create({
-    trigger: sales,
-    start: "top 82%",
-    once: true,
-    onEnter: () => {
-      gsap.to(rows, { autoAlpha: 1, x: 0, stagger: 0.1, duration: 0.45, ease: "power2.out", delay: 0.2 });
-      if (qr) gsap.to(qr, { autoAlpha: 1, scale: 1, duration: 0.5, ease: "back.out(1.5)", delay: 0.5 });
-    },
-  });
-})();
+});
 
 // ─── Feature cards scale + fade entrance ─────────────────────────────────────
 gsap.set(".feature-card", { autoAlpha: 0, y: 50, scale: 0.97 });
