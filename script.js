@@ -357,6 +357,74 @@ document.querySelectorAll(".nav-links a").forEach((link) => {
   });
 });
 
+// ─── Compare list items ───────────────────────────────────────────────────────
+gsap.set(".compare-list li", { autoAlpha: 0, x: -16 });
+
+document.querySelectorAll(".compare-col").forEach((col) => {
+  ScrollTrigger.create({
+    trigger: col,
+    start: "top 84%",
+    once: true,
+    onEnter: () => {
+      gsap.to(col.querySelectorAll(".compare-list li"), {
+        autoAlpha: 1, x: 0, stagger: 0.07, duration: 0.45, ease: "power2.out",
+      });
+    },
+  });
+});
+
+// ─── Step numbers count up ────────────────────────────────────────────────────
+gsap.set(".step-item", { autoAlpha: 0, y: 32 });
+
+ScrollTrigger.batch(".step-item", {
+  onEnter: (batch) => {
+    gsap.to(batch, { autoAlpha: 1, y: 0, stagger: 0.15, duration: 0.7, ease: "power3.out", overwrite: true });
+  },
+  start: "top 85%",
+  once: true,
+});
+
+// ─── Testimonial text reveal ──────────────────────────────────────────────────
+gsap.from(".testimonial-text", {
+  autoAlpha: 0, y: 28, duration: 1, ease: "power3.out",
+  scrollTrigger: { trigger: ".testimonial-card", start: "top 82%", once: true },
+});
+gsap.from(".testimonial-author", {
+  autoAlpha: 0, y: 16, duration: 0.65, ease: "power2.out", delay: 0.3,
+  scrollTrigger: { trigger: ".testimonial-card", start: "top 82%", once: true },
+});
+
+// ─── Video mock bars animate ──────────────────────────────────────────────────
+gsap.set(".vs-chart-bar", { scaleY: 0, transformOrigin: "bottom center" });
+gsap.set(".vs-kpi", { autoAlpha: 0, y: 10 });
+
+ScrollTrigger.create({
+  trigger: ".video-wrap",
+  start: "top 80%",
+  once: true,
+  onEnter: () => {
+    gsap.to(".vs-chart-bar", { scaleY: 1, stagger: 0.06, duration: 0.5, ease: "power3.out", delay: 0.2 });
+    gsap.to(".vs-kpi", { autoAlpha: 1, y: 0, stagger: 0.08, duration: 0.4, ease: "power2.out", delay: 0.1 });
+  },
+});
+
+// ─── FAQ items stagger ────────────────────────────────────────────────────────
+gsap.set(".faq-item", { autoAlpha: 0, y: 18 });
+
+ScrollTrigger.batch(".faq-item", {
+  onEnter: (batch) => {
+    gsap.to(batch, { autoAlpha: 1, y: 0, stagger: 0.08, duration: 0.55, ease: "power2.out", overwrite: true });
+  },
+  start: "top 88%",
+  once: true,
+});
+
+// ─── Pricing form slide in ────────────────────────────────────────────────────
+gsap.from(".contact-form-card", {
+  autoAlpha: 0, x: 28, duration: 0.8, ease: "power3.out",
+  scrollTrigger: { trigger: ".pricing-grid", start: "top 82%", once: true },
+});
+
 // ─── Accessibility: respect prefers-reduced-motion ────────────────────────────
 mm.add("(prefers-reduced-motion: reduce)", () => {
   gsap.globalTimeline.timeScale(20);
