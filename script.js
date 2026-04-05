@@ -357,6 +357,46 @@ document.querySelectorAll(".nav-links a").forEach((link) => {
   });
 });
 
+// ─── Vidriera — interactive phone model switcher ─────────────────────────────
+let phoneSwitching = false;
+
+function switchPhoneView(view) {
+  if (phoneSwitching) return;
+  const current = document.querySelector(".sv-pview:not(.sv-pview-hidden)");
+  const target  = document.getElementById(`sv-pview-${view}`);
+  if (!target || target === current) return;
+
+  phoneSwitching = true;
+
+  // Sync chips inside phone
+  document.querySelectorAll(".sv-chip[data-sv-chip]").forEach((c) =>
+    c.classList.toggle("sv-chip-active", c.dataset.svChip === view)
+  );
+  // Sync selector buttons
+  document.querySelectorAll(".pms-btn").forEach((b) =>
+    b.classList.toggle("pms-active", b.dataset.pview === view)
+  );
+
+  gsap.to(current, {
+    autoAlpha: 0, x: -10, duration: 0.16, ease: "power2.in",
+    onComplete: () => {
+      current.classList.add("sv-pview-hidden");
+      gsap.set(current, { x: 0, autoAlpha: 1 });
+      target.classList.remove("sv-pview-hidden");
+      gsap.fromTo(target,
+        { autoAlpha: 0, x: 10 },
+        { autoAlpha: 1, x: 0, duration: 0.2, ease: "power2.out",
+          onComplete: () => { phoneSwitching = false; }
+        }
+      );
+    },
+  });
+}
+
+document.querySelectorAll(".pms-btn").forEach((btn) =>
+  btn.addEventListener("click", () => switchPhoneView(btn.dataset.pview))
+);
+
 // ─── Vidriera — phone slides in, list items stagger ──────────────────────────
 gsap.from(".phone-shell", {
   autoAlpha: 0, y: 40, rotationY: -8, transformPerspective: 900, duration: 1, ease: "power3.out",
