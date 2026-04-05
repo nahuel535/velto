@@ -1867,30 +1867,74 @@ img { max-width: 100%; display: block; }
 }
 
 .phone-shell {
-  width: 268px;
-  background: #111;
-  border-radius: 44px;
-  padding: 14px;
-  box-shadow: 0 48px 96px rgba(0,0,0,.28), 0 0 0 1px rgba(255,255,255,.06), inset 0 0 0 1px rgba(255,255,255,.04);
+  width: 260px;
+  /* iPhone titanium finish */
+  background: linear-gradient(170deg, #C8C3BC 0%, #B8B3AC 40%, #A8A39C 100%);
+  border-radius: 46px;
+  padding: 12px;
+  box-shadow:
+    0 56px 100px rgba(0,0,0,.32),
+    0 0 0 1px rgba(255,255,255,.18),
+    inset 0 1px 0 rgba(255,255,255,.22),
+    inset 0 -1px 0 rgba(0,0,0,.12);
   position: relative;
 }
 
-.phone-notch {
-  width: 90px;
-  height: 24px;
-  background: #111;
-  border-radius: 0 0 18px 18px;
-  margin: 0 auto 8px;
-  position: relative;
-  z-index: 2;
+/* Physical buttons */
+.iphone-btn {
+  position: absolute;
+  background: linear-gradient(90deg, #9a9590, #b0aaa4);
+  border-radius: 2px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2);
+}
+
+.iphone-vol-up {
+  left: -3px;
+  top: 88px;
+  width: 3px;
+  height: 30px;
+  border-radius: 2px 0 0 2px;
+}
+
+.iphone-vol-down {
+  left: -3px;
+  top: 128px;
+  width: 3px;
+  height: 40px;
+  border-radius: 2px 0 0 2px;
+}
+
+.iphone-power {
+  right: -3px;
+  top: 104px;
+  width: 3px;
+  height: 52px;
+  border-radius: 0 2px 2px 0;
+  background: linear-gradient(270deg, #9a9590, #b0aaa4);
+}
+
+/* Dynamic Island */
+.iphone-island {
+  position: absolute;
+  top: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 84px;
+  height: 26px;
+  background: #0a0a0a;
+  border-radius: 20px;
+  z-index: 10;
+  box-shadow: 0 2px 8px rgba(0,0,0,.5);
 }
 
 .phone-screen {
   background: #fff;
-  border-radius: 30px;
+  border-radius: 34px;
   overflow: hidden;
   font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", sans-serif;
   -webkit-font-smoothing: antialiased;
+  /* Push content below the island */
+  padding-top: 38px;
 }
 
 /* Nav (scrolled — white/blur) */
