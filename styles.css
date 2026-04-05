@@ -1283,6 +1283,7 @@ img { max-width: 100%; display: block; }
 
 @media (max-width: 480px) {
   .feature-grid { grid-template-columns: 1fr; }
+  .feature-card h4 { font-size: 20px; }
   .compare-col { padding: 24px 20px; }
   .step-item { padding: 28px 24px; }
   .testimonial-card { padding: 40px 16px; }
@@ -2353,6 +2354,12 @@ img { max-width: 100%; display: block; }
   .dark-panel.big { padding: 28px; }
   /* features */
   .feature-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .feature-card h4 { font-size: 22px; }
+  .feature-card p { font-size: 15px; }
+  .feature-card, .info-card { padding: 24px; }
+  .feature-icon { font-size: 20px !important; }
+  .feature-top { margin-bottom: 8px; }
+  .feature-top h3 { font-size: 14px !important; }
   /* center block */
   .center-block { max-width: 100%; }
   /* compare */
