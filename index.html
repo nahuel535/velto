@@ -571,66 +571,108 @@
         </div>
 
         <div class="vidriera-preview reveal">
-          <!-- Phone mockup showing the storefront -->
           <div class="phone-shell">
             <div class="phone-notch"></div>
             <div class="phone-screen">
-              <div class="phone-bar">
-                <span class="phone-bar-dot"></span>
-                <span class="phone-url">xylobox.store</span>
+
+              <!-- Nav (scrolled state: white + blur) -->
+              <div class="sv-nav">
+                <span class="sv-brand">Xylo</span>
+                <span class="sv-consult">
+                  <svg width="9" height="9" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.123.558 4.114 1.534 5.836L.053 23.5l5.849-1.534A11.94 11.94 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 0 1-5.003-1.37l-.359-.214-3.721.977.995-3.635-.234-.373A9.818 9.818 0 1 1 12 21.818z"/></svg>
+                  Consultar
+                </span>
               </div>
-              <div class="phone-content">
-                <div class="store-header">
-                  <div class="store-brand">XYLO</div>
-                  <div class="store-sub">iPhones certificados</div>
+
+              <!-- URL bar -->
+              <div class="sv-urlbar">
+                <div class="sv-urlbar-inner">
+                  <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2.5"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                  <span>xylobox.store</span>
                 </div>
-                <div class="store-filters">
-                  <span class="store-chip store-chip-active">Todos</span>
-                  <span class="store-chip">Pro</span>
-                  <span class="store-chip">Plus</span>
-                  <span class="store-chip">Usados</span>
+              </div>
+
+              <!-- Scrollable content -->
+              <div class="sv-scroll">
+
+                <!-- Stock header -->
+                <div class="sv-section-head">
+                  <div class="sv-section-title">Equipos disponibles</div>
+                  <div class="sv-section-count">20 equipos en stock</div>
                 </div>
-                <div class="store-cards">
-                  <div class="store-card">
-                    <div class="store-card-img">
-                      <span class="sc-badge sc-badge-green">97%</span>
+
+                <!-- Search -->
+                <div class="sv-search">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#aaa" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  <span>Buscar modelo, color...</span>
+                </div>
+
+                <!-- Filter chips -->
+                <div class="sv-chips">
+                  <span class="sv-chip sv-chip-active">Todos</span>
+                  <span class="sv-chip">15 Pro</span>
+                  <span class="sv-chip">14 Pro</span>
+                  <span class="sv-chip">256GB</span>
+                </div>
+
+                <!-- Card 1 -->
+                <div class="sv-card">
+                  <div class="sv-card-img"></div>
+                  <div class="sv-card-body">
+                    <div class="sv-card-model">iPhone 15 Pro Max</div>
+                    <div class="sv-card-sub">256GB · Natural</div>
+                    <div class="sv-battery">
+                      <div class="sv-bat-track"><div class="sv-bat-fill" style="width:97%;background:#34c759"></div></div>
+                      <span class="sv-bat-pct" style="color:#34c759">97%</span>
                     </div>
-                    <div class="store-card-info">
-                      <div class="sc-model">iPhone 15 Pro Max</div>
-                      <div class="sc-cap">256GB · Natural</div>
-                      <div class="sc-price">$1.200</div>
+                    <div class="sv-card-footer">
+                      <div>
+                        <div class="sv-price-usd">USD 1.200</div>
+                        <div class="sv-price-ars">ARS 1.278.000</div>
+                      </div>
+                      <div class="sv-arrow">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                      </div>
                     </div>
                   </div>
-                  <div class="store-card">
-                    <div class="store-card-img">
-                      <span class="sc-badge sc-badge-green">100%</span>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="sv-card">
+                  <div class="sv-card-img" style="background:linear-gradient(135deg,#f0ede8,#ddd9d4)"></div>
+                  <div class="sv-card-body">
+                    <div class="sv-card-model">iPhone 14 Pro</div>
+                    <div class="sv-card-sub">256GB · Dorado</div>
+                    <div class="sv-battery">
+                      <div class="sv-bat-track"><div class="sv-bat-fill" style="width:88%;background:#ff9f0a"></div></div>
+                      <span class="sv-bat-pct" style="color:#ff9f0a">88%</span>
                     </div>
-                    <div class="store-card-info">
-                      <div class="sc-model">iPhone 15 Pro</div>
-                      <div class="sc-cap">128GB · Negro</div>
-                      <div class="sc-price">$1.050</div>
-                    </div>
-                  </div>
-                  <div class="store-card">
-                    <div class="store-card-img">
-                      <span class="sc-badge sc-badge-yellow">88%</span>
-                    </div>
-                    <div class="store-card-info">
-                      <div class="sc-model">iPhone 14 Pro</div>
-                      <div class="sc-cap">256GB · Dorado</div>
-                      <div class="sc-price">$850</div>
+                    <div class="sv-card-footer">
+                      <div>
+                        <div class="sv-price-usd">USD 850</div>
+                        <div class="sv-price-ars">ARS 905.250</div>
+                      </div>
+                      <div class="sv-arrow">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#1d1d1f" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="store-request">
-                  <span>¿No encontrás lo que buscás?</span>
-                  <span class="store-request-btn">Pedir modelo →</span>
+
+                <!-- CTA footer -->
+                <div class="sv-cta-block">
+                  <div class="sv-cta-q">¿No encontrás lo que buscás?</div>
+                  <div class="sv-cta-btn">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413z"/></svg>
+                    Escribinos por WhatsApp
+                  </div>
                 </div>
+
               </div>
             </div>
           </div>
           <!-- Floating tag -->
-          <div class="vidriera-tag reveal">
+          <div class="vidriera-tag">
             <span class="vtag-dot"></span>
             Sincronizado con el sistema
           </div>
