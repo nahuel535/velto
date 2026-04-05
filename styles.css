@@ -2019,9 +2019,13 @@ img { max-width: 100%; display: block; }
 
 .sv-card-img {
   width: 100%;
-  height: 100px;
-  background: linear-gradient(135deg, #e8e8ed, #d8d8df);
-  position: relative;
+  height: 112px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, #e8e8ed, #d8d8df);
+  overflow: visible;
+  padding: 10px 0;
 }
 
 .sv-card-body {
