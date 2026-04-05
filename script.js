@@ -357,6 +357,22 @@ document.querySelectorAll(".nav-links a").forEach((link) => {
   });
 });
 
+// ─── Vidriera — phone slides in, list items stagger ──────────────────────────
+gsap.from(".phone-shell", {
+  autoAlpha: 0, y: 40, rotationY: -8, transformPerspective: 900, duration: 1, ease: "power3.out",
+  scrollTrigger: { trigger: ".vidriera-preview", start: "top 82%", once: true },
+});
+
+gsap.set(".vidriera-list li", { autoAlpha: 0, x: -20 });
+ScrollTrigger.create({
+  trigger: ".vidriera-list",
+  start: "top 82%",
+  once: true,
+  onEnter: () => {
+    gsap.to(".vidriera-list li", { autoAlpha: 1, x: 0, stagger: 0.1, duration: 0.55, ease: "power2.out" });
+  },
+});
+
 // ─── Compare list items ───────────────────────────────────────────────────────
 gsap.set(".compare-list li", { autoAlpha: 0, x: -16 });
 
